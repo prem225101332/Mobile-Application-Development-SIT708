@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">task_2.1</string>
+    <string-array name="sarray" >
+        <item>Currency</item>
+        <item>Fuel Efficiency</item>
+        <item>Temperature</item>
+    </string-array>
+    <string-array name="currency" >
+        <item>USD</item>
+        <item>AUD</item>
+        <item>EUR</item>
+        <item>JPY</item>
+        <item>GBP</item>
+    </string-array>
+</resources>
