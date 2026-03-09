@@ -45,7 +45,9 @@ public class Currency extends AppCompatActivity {
             default:    return 1.0;
         }
     }
-
+    public void goHome(View v) {
+        finish();
+    }
     public void calculate(View v) {
         String from = spinner.getSelectedItem().toString();
         String to = spinner3.getSelectedItem().toString();

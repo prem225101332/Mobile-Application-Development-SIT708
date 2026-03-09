@@ -35,6 +35,9 @@ public class Fuel extends AppCompatActivity {
         input = findViewById(R.id.editTextText2);
         result = findViewById(R.id.textView10);
     }
+    public void goHome(View v) {
+        finish();
+    }
     public void calculateFuel(View V){
         String from = spinner4.getSelectedItem().toString();
         String to = spinner5.getSelectedItem().toString();

@@ -35,6 +35,9 @@ public class Temperature extends AppCompatActivity {
         input = findViewById(R.id.editTextText3);
         result = findViewById(R.id.textView13);
     }
+    public void goHome(View v) {
+        finish();
+    }
     public void calculateTemp(View V){
         String from = spinner6.getSelectedItem().toString();
         String to = spinner7.getSelectedItem().toString();
