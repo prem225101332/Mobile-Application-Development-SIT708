@@ -3,6 +3,9 @@ package com.example.task_21;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +14,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Temperature extends AppCompatActivity {
+
+    Spinner spinner6, spinner7;
+    EditText input;
+    TextView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +29,34 @@ public class Temperature extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-    }
 
+        spinner6 = findViewById(R.id.spinner6);
+        spinner7 = findViewById(R.id.spinner7);
+        input = findViewById(R.id.editTextText3);
+        result = findViewById(R.id.textView13);
+    }
+    public void calculateTemp(View V){
+        String from = spinner6.getSelectedItem().toString();
+        String to = spinner7.getSelectedItem().toString();
+        double amount = Double.parseDouble(input.getText().toString());
+        double converted = 0;
+
+        if(from.equals("Fahrenheit") && to.equals("Celsius")){
+            converted = (amount - 32)/1.8;
+        } else if(from.equals("Celsius") && to.equals("Fahrenheit")){
+            converted = (amount * 1.8) + 32;
+        } else if(from.equals("Celsius") && to.equals("Kelvin")){
+            converted = amount + 273.15;
+        } else if(from.equals("Kelvin") && to.equals("Celsius")) {
+            converted = amount - 273.15;
+        } else if (from.equals("Fahrenheit") && to.equals("Kelvin")) {
+            double celsius = (amount - 32) / 1.8;
+            converted = celsius + 273.15;
+        } else if (from.equals("Kelvin") && to.equals("Fahrenheit")) {
+            double celsius = amount - 273.15;
+            converted = (celsius * 1.8) + 32;
+        }
+
+        result.setText(amount + " " + from + " = " + converted + " " + to);
+    }
 }

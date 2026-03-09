@@ -20,4 +20,9 @@
         <item>Nautical Mile</item>
         <item>Km</item>
     </string-array>
+    <string-array name="temperature" >
+        <item>Fahrenheit</item>
+        <item>Celsius</item>
+        <item>Kelvin</item>
+    </string-array>
 </resources>
