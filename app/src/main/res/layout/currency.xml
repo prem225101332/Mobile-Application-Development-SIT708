@@ -2,18 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#E9C0F0"
+    android:backgroundTint="#D9ABEB">
 
     <Spinner
         android:id="@+id/spinner3"
         android:layout_width="114dp"
         android:layout_height="32dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="88dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="76dp"
+        android:entries="@array/currency"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        android:entries="@array/currency"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView"
@@ -21,7 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="120dp"
-        android:text="Source"
+        android:text="From"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="116dp"
-        android:text="Destination"
+        android:text="To"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,22 +44,21 @@
         android:id="@+id/spinner"
         android:layout_width="114dp"
         android:layout_height="32dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="44dp"
+        android:entries="@array/currency"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:entries="@array/currency"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/editTextText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="372dp"
+        android:layout_marginTop="356dp"
         android:ems="10"
-        android:inputType="text"
-        android:text="Value"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintHorizontal_bias="0.149"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,21 +76,23 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="44dp"
         android:text="Enter your value below"
         app:layout_constraintBottom_toTopOf="@+id/editTextText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="click"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="356dp"
+        android:onClick="calculate"
+        android:text="Enter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toEndOf="@+id/editTextText"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.54" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,4 +12,12 @@
         <item>JPY</item>
         <item>GBP</item>
     </string-array>
+    <string-array name="fuel_and_distance" >
+        <item>mpg</item>
+        <item>Km/L</item>
+        <item>Gallon(US)</item>
+        <item>Litres</item>
+        <item>Nautical Mile</item>
+        <item>Km</item>
+    </string-array>
 </resources>
