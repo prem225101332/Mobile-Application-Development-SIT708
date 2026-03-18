@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,7 +52,19 @@ public class Currency extends AppCompatActivity {
     public void calculate(View v) {
         String from = spinner.getSelectedItem().toString();
         String to = spinner3.getSelectedItem().toString();
-        
+
+        String raw = input.getText().toString();
+
+        if (raw.isEmpty()) {
+            Toast.makeText(this, "Please enter a value", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (from.equals(to)) {
+            Toast.makeText(this, "Please select different units", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         try {
             double amount = Double.parseDouble(input.getText().toString());
             double inUSD = amount / getUsdRate(from);

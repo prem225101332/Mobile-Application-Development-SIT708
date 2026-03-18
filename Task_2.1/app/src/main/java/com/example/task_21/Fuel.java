@@ -1,6 +1,6 @@
 package com.example.task_21;
 
-import android.content.Intent;
+import android.widget.Toast;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -41,6 +41,19 @@ public class Fuel extends AppCompatActivity {
     public void calculateFuel(View V){
         String from = spinner4.getSelectedItem().toString();
         String to = spinner5.getSelectedItem().toString();
+
+        String raw = input.getText().toString();
+
+        if (raw.isEmpty()) {
+            Toast.makeText(this, "Please enter a value", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (from.equals(to)) {
+            Toast.makeText(this, "Please select different units", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         double amount = Double.parseDouble(input.getText().toString());
         double converted = 0;
 
@@ -60,6 +73,10 @@ public class Fuel extends AppCompatActivity {
             converted = amount * 1.852;
         } else if (from.equals("Km") && to.equals("Nautical Mile")) {
             converted = amount / 1.852;
+        }
+        if (amount < 0) {
+            Toast.makeText(this, "Fuel values cannot be negative", Toast.LENGTH_SHORT).show();
+            return;
         }
         result.setText(amount + " " + from + " = " + converted + " " + to);
     }

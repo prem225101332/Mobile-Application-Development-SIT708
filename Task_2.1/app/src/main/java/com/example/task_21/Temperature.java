@@ -1,6 +1,6 @@
 package com.example.task_21;
 
-import android.content.Intent;
+import android.widget.Toast;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -41,6 +41,19 @@ public class Temperature extends AppCompatActivity {
     public void calculateTemp(View V){
         String from = spinner6.getSelectedItem().toString();
         String to = spinner7.getSelectedItem().toString();
+
+        String raw = input.getText().toString();
+
+        if (raw.isEmpty()) {
+            Toast.makeText(this, "Please enter a value", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (from.equals(to)) {
+            Toast.makeText(this, "Please select different units", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         double amount = Double.parseDouble(input.getText().toString());
         double converted = 0;
 
