@@ -1,3 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Quizz App</string>
+    <string name="app_name">QuizzApp</string>
+    <string name="app_tagline">Fruits &amp; Vegetables Edition</string>
+
+    <string name="welcome_title">SIT708 Quiz APP</string>
+    <string name="welcome_name_prompt">What\'s your name?</string>
+    <string name="name_hint">Enter your name here…</string>
+    <string name="btn_start">Start Quiz</string>
+    <string name="quiz_info">10 questions • Multiple choice</string>
+    <string name="error_name_empty">Please enter your name first!</string>
+
+    <string name="btn_submit">Submit</string>
+    <string name="btn_next">Next Question →</string>
+    <string name="btn_see_results">See My Results 🏆</string>
+
+    <string name="result_title">Quiz Complete!</string>
+    <string name="result_score_label">YOUR SCORE</string>
+    <string name="btn_new_quiz">Take New Quiz</string>
+    <string name="btn_finish">Finish</string>
+
+    <string name="theme_toggle_dark">🌙</string>
+    <string name="theme_toggle_light">☀️</string>
+    <string name="content_desc_theme">Toggle dark/light mode</string>
 </resources>
