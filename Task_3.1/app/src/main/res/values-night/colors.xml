@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_background">#1A1D2E</color>
+    <color name="color_surface">#252840</color>
+    <color name="color_card_bg">#252840</color>
+    <color name="color_text_primary">#EDF2F7</color>
+    <color name="color_text_secondary">#A0AEC0</color>
+    <color name="color_option_bg">#2D3154</color>
+    <color name="color_option_border">#3D4270</color>
+    <color name="color_option_text">#EDF2F7</color>
+    <color name="color_option_selected_bg">#3D2820</color>
+    <color name="color_option_selected_border">#FF6B35</color>
+    <color name="color_progress_track">#3D4270</color>
+    <color name="color_topbar_bg">#252840</color>
+    <color name="color_divider">#2D3154</color>
+
+</resources>
