@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">QuizzApp</string>
-    <string name="app_tagline">Fruits &amp; Vegetables Edition</string>
-
-    <string name="welcome_title">SIT708 Quiz APP</string>
+    <string name="welcome_title">SIT708 Quiz</string>
     <string name="welcome_name_prompt">What\'s your name?</string>
-    <string name="name_hint">Enter your name here…</string>
-    <string name="btn_start">Start Quiz</string>
-    <string name="quiz_info">10 questions • Multiple choice</string>
+    <string name="name_hint">Enter your name</string>
+    <string name="btn_start">Start</string>
+    <string name="quiz_info">10 questions | Multiple choice</string>
     <string name="error_name_empty">Please enter your name first!</string>
 
     <string name="btn_submit">Submit</string>

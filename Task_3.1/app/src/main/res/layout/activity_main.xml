@@ -1,83 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_background"
     android:orientation="vertical"
-    android:padding="24dp"
-    android:background="@color/color_background">
+    android:padding="24dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="end">
+        android:gravity="end"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnThemeToggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="🌙"
-            android:textSize="18sp"
             android:backgroundTint="@color/color_divider"
-            android:stateListAnimator="@null"/>
+            android:stateListAnimator="@null"
+            android:text="@string/theme_toggle_dark"
+            android:textSize="18sp"
+            app:cornerRadius="@dimen/cardview_default_radius" />
 
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/welcome_title"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:textColor="@color/color_primary"
         android:layout_marginTop="32dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+        android:text="@string/welcome_title"
+        android:textColor="@color/color_primary"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_tagline"
-        android:textSize="14sp"
-        android:textColor="@color/color_text_secondary"
-        android:layout_marginBottom="48dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="@string/welcome_name_prompt"
-        android:textSize="16sp"
         android:textColor="@color/color_text_primary"
-        android:layout_marginBottom="8dp"/>
+        android:textSize="16sp" />
 
-    <!-- Name input -->
     <EditText
         android:id="@+id/etPlayerName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/name_hint"
-        android:textSize="16sp"
-        android:padding="12dp"
+        android:layout_marginBottom="32dp"
         android:background="@android:drawable/edit_text"
+        android:hint="@string/name_hint"
         android:inputType="textPersonName"
-        android:layout_marginBottom="32dp"/>
+        android:padding="12dp"
+        android:textSize="16sp" />
 
-    <!-- Start button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnStartQuiz"
         style="@style/Widget.QuizzApp.Button.Primary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_start"/>
+        android:text="@string/btn_start" />
 
-    <!-- Info -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/quiz_info"
-        android:textSize="13sp"
-        android:textColor="@color/color_text_secondary"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:text="@string/quiz_info"
+        android:textColor="@color/color_text_secondary"
+        android:textSize="13sp" />
 
 </LinearLayout>
