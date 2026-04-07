@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/eventlist">
+
+    <fragment
+        android:id="@+id/eventlist"
+        android:name="com.example.personaleventplanner.EventListFragment"
+        android:label="Events"
+        tools:layout="@layout/eventslist">
+        <action
+            android:id="@+id/action_list_to_detail"
+            app:destination="@id/eventdetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addeditevent"
+        android:name="com.example.personaleventplanner.AddEditEventFragment"
+        android:label="Add/Edit Event"
+        tools:layout="@layout/addevent">
+        <argument
+            android:name="eventId"
+            android:defaultValue="-1L"
+            app:argType="long" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/eventdetail"
+        android:name="com.example.personaleventplanner.EventDetailFragment"
+        android:label="Event Details"
+        tools:layout="@layout/eventdetail">
+        <argument
+            android:name="eventId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_detail_to_edit"
+            app:destination="@id/addeditevent" />
+    </fragment>
+
+</navigation>
