@@ -1,0 +1,12 @@
+<resources>
+    <style name="Theme.iStreamApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#FF1744</item>
+        <item name="colorPrimaryVariant">#D50000</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#FF5252</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="android:windowBackground">#121212</item>
+        <item name="android:editTextColor">#FFFFFF</item>
+        <item name="android:textColorHint">#888888</item>
+    </style>
+</resources>
