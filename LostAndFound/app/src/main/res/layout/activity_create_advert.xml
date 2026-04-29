@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView android:text="Post Type:" android:textStyle="bold"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+        <RadioGroup android:id="@+id/radioGroup"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp">
+            <RadioButton android:id="@+id/radioLost" android:text="Lost" android:checked="true"/>
+            <RadioButton android:id="@+id/radioFound" android:text="Found" android:layout_marginStart="16dp"/>
+        </RadioGroup>
+
+        <TextView android:text="Name:" android:textStyle="bold"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/etName"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Item name" android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView android:text="Phone:" android:textStyle="bold"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/etPhone"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Contact number" android:inputType="phone"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView android:text="Description:" android:textStyle="bold"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/etDescription"
+            android:layout_width="match_parent" android:layout_height="100dp"
+            android:hint="Describe the item..." android:gravity="top"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView android:text="Category:" android:textStyle="bold"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <Spinner android:id="@+id/spinnerCategory"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView android:text="Date:" android:textStyle="bold"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/etDate"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="YYYY-MM-DD" android:focusable="false"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView android:text="Location:" android:textStyle="bold"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/etLocation"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Where was it lost/found?"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="16dp"/>
+
+        <Button android:id="@+id/btnPickImage"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="📷 Upload Image"
+            android:backgroundTint="#888"
+            android:layout_marginBottom="8dp"/>
+
+        <ImageView android:id="@+id/imagePreview"
+            android:layout_width="match_parent" android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp"/>
+
+        <Button android:id="@+id/btnSave"
+            android:layout_width="match_parent" android:layout_height="56dp"
+            android:text="SAVE"
+            android:backgroundTint="#4A90D9"/>
+
+    </LinearLayout>
+</ScrollView>
