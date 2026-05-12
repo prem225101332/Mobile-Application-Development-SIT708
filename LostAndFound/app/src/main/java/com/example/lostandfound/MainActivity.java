@@ -19,5 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
         btnShow.setOnClickListener(v ->
                 startActivity(new Intent(this, ShowItemsActivity.class)));
+        Button btnMap = findViewById(R.id.btnShowMap);
+
+        btnMap.setOnClickListener(v ->
+                startActivity(new Intent(this, MapsActivity.class)));
     }
 }

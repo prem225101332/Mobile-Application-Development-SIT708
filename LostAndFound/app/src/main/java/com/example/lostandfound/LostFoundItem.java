@@ -3,6 +3,13 @@ package com.example.lostandfound;
 public class LostFoundItem {
     private int id;
     private String type, name, phone, description, date, location, category, imagePath;
+    private double latitude;
+    private double longitude;
+
+    public double getLatitude() { return latitude; }
+    public double getLongitude() { return longitude; }
+    public void setLatitude(double latitude) { this.latitude = latitude; }
+    public void setLongitude(double longitude) { this.longitude = longitude; }
 
     public int getId() { return id; }
     public String getType() { return type; }

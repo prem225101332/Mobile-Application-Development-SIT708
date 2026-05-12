@@ -11,18 +11,20 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "lostandfound.db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 5;
     public static final String TABLE = "items";
 
-    public static final String COL_ID = "id";
-    public static final String COL_TYPE = "type";        // "Lost" or "Found"
-    public static final String COL_NAME = "name";
-    public static final String COL_PHONE = "phone";
-    public static final String COL_DESC = "description";
-    public static final String COL_DATE = "date";
+    public static final String COL_ID       = "id";
+    public static final String COL_TYPE     = "type";
+    public static final String COL_NAME     = "name";
+    public static final String COL_PHONE    = "phone";
+    public static final String COL_DESC     = "description";
+    public static final String COL_DATE     = "date";
     public static final String COL_LOCATION = "location";
     public static final String COL_CATEGORY = "category";
-    public static final String COL_IMAGE = "image";      // stored as file path
+    public static final String COL_IMAGE    = "image";
+    public static final String COL_LAT      = "latitude";
+    public static final String COL_LNG      = "longitude";
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -31,15 +33,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE " + TABLE + " (" +
-                COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_TYPE + " TEXT, " +
-                COL_NAME + " TEXT, " +
-                COL_PHONE + " TEXT, " +
-                COL_DESC + " TEXT, " +
-                COL_DATE + " TEXT, " +
+                COL_ID       + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_TYPE     + " TEXT, " +
+                COL_NAME     + " TEXT, " +
+                COL_PHONE    + " TEXT, " +
+                COL_DESC     + " TEXT, " +
+                COL_DATE     + " TEXT, " +
                 COL_LOCATION + " TEXT, " +
                 COL_CATEGORY + " TEXT, " +
-                COL_IMAGE + " TEXT)";
+                COL_IMAGE    + " TEXT, " +
+                COL_LAT      + " REAL DEFAULT 0.0, " +
+                COL_LNG      + " REAL DEFAULT 0.0)";
         db.execSQL(sql);
     }
 
@@ -52,42 +56,76 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public long insertItem(LostFoundItem item) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COL_TYPE, item.getType());
-        cv.put(COL_NAME, item.getName());
-        cv.put(COL_PHONE, item.getPhone());
-        cv.put(COL_DESC, item.getDescription());
-        cv.put(COL_DATE, item.getDate());
+        cv.put(COL_TYPE,     item.getType());
+        cv.put(COL_NAME,     item.getName());
+        cv.put(COL_PHONE,    item.getPhone());
+        cv.put(COL_DESC,     item.getDescription());
+        cv.put(COL_DATE,     item.getDate());
         cv.put(COL_LOCATION, item.getLocation());
         cv.put(COL_CATEGORY, item.getCategory());
-        cv.put(COL_IMAGE, item.getImagePath());
+        cv.put(COL_IMAGE,    item.getImagePath());
+        cv.put(COL_LAT,      item.getLatitude());
+        cv.put(COL_LNG,      item.getLongitude());
         return db.insert(TABLE, null, cv);
     }
 
+    // GET ALL
     public List<LostFoundItem> getAllItems() {
         List<LostFoundItem> list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " ORDER BY " + COL_ID + " DESC", null);
-        if (cursor.moveToFirst()) {
-            do {
-                list.add(cursorToItem(cursor));
-            } while (cursor.moveToNext());
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery(
+                "SELECT * FROM " + TABLE + " ORDER BY " + COL_ID + " DESC", null);
+            if (cursor.moveToFirst()) {
+                do {
+                    list.add(cursorToItem(cursor));
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) cursor.close();
         }
-        cursor.close();
         return list;
     }
 
     public List<LostFoundItem> getItemsByCategory(String category) {
         List<LostFoundItem> list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(
-                "SELECT * FROM " + TABLE + " WHERE " + COL_CATEGORY + " = ? ORDER BY " + COL_ID + " DESC",
-                new String[]{category}
-        );
-        if (cursor.moveToFirst()) {
-            do { list.add(cursorToItem(cursor)); } while (cursor.moveToNext());
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery(
+                "SELECT * FROM " + TABLE + " WHERE " + COL_CATEGORY +
+                " = ? ORDER BY " + COL_ID + " DESC",
+                new String[]{category});
+            if (cursor.moveToFirst()) {
+                do { list.add(cursorToItem(cursor)); } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) cursor.close();
         }
-        cursor.close();
         return list;
+    }
+
+    public LostFoundItem getItemById(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery(
+                "SELECT * FROM " + TABLE + " WHERE " + COL_ID + " = ?",
+                new String[]{String.valueOf(id)});
+            if (cursor.moveToFirst()) {
+                return cursorToItem(cursor);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) cursor.close();
+        }
+        return null;
     }
 
     public void deleteItem(int id) {
@@ -106,20 +144,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         item.setLocation(cursor.getString(cursor.getColumnIndexOrThrow(COL_LOCATION)));
         item.setCategory(cursor.getString(cursor.getColumnIndexOrThrow(COL_CATEGORY)));
         item.setImagePath(cursor.getString(cursor.getColumnIndexOrThrow(COL_IMAGE)));
-        return item;
-    }
 
-    public LostFoundItem getItemById(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(
-                "SELECT * FROM " + TABLE + " WHERE " + COL_ID + " = ?",
-                new String[]{String.valueOf(id)}
-        );
-        LostFoundItem item = null;
-        if (cursor.moveToFirst()) {
-            item = cursorToItem(cursor);
-        }
-        cursor.close();
+        int latIdx = cursor.getColumnIndex(COL_LAT);
+        int lngIdx = cursor.getColumnIndex(COL_LNG);
+        item.setLatitude(latIdx >= 0 ? cursor.getDouble(latIdx) : 0.0);
+        item.setLongitude(lngIdx >= 0 ? cursor.getDouble(lngIdx) : 0.0);
+
         return item;
     }
 }

@@ -60,11 +60,44 @@
 
         <TextView android:text="Location:" android:textStyle="bold"
             android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
         <EditText android:id="@+id/etLocation"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:hint="Where was it lost/found?"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type any address or suburb..."
             android:background="@android:drawable/edit_text"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <Button android:id="@+id/btnSearchLocation"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="SEARCH LOCATION"
+                android:backgroundTint="#4A90D9"
+                android:layout_marginEnd="4dp"/>
+
+            <Button android:id="@+id/btnCurrentLocation"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="USE MY LOCATION"
+                android:backgroundTint="#5B9E6F"/>
+
+        </LinearLayout>
+
+        <TextView android:id="@+id/tvLocationStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#3CAD6E"
+            android:textSize="12sp"
+            android:layout_marginBottom="12dp"/>
 
         <Button android:id="@+id/btnPickImage"
             android:layout_width="match_parent" android:layout_height="wrap_content"
